@@ -43,10 +43,10 @@ function onStartTimer() {
         
         if (dateDiff >= 0) {
             let time = convertMs(dateDiff);
-            refs.days.textContent = time.days;
-            refs.hours.textContent = time.hours;
-            refs.minutes.textContent = time.minutes;
-            refs.seconds.textContent = time.seconds;
+            refs.days.textContent = addLeadingZero(time.days);
+            refs.hours.textContent = addLeadingZero(time.hours);
+            refs.minutes.textContent = addLeadingZero(time.minutes);
+            refs.seconds.textContent = addLeadingZero(time.seconds);
         } else {
             Notiflix.Notify.success('Finished!');
             clearInterval(timerId);
