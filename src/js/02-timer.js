@@ -35,25 +35,6 @@ const options = {
 const fp = flatpickr(refs.datePicker, options);
 refs.btnStart.addEventListener('click', onStartTimer);
 
-function onStartTimer() {
-    refs.datePicker.disabled = true;
-     timerId = setInterval(() => {
-        refs.btnStart.disabled = true;
-        let dateDiff = endDate - new Date();
-        
-        if (dateDiff >= 0) {
-            let time = convertMs(dateDiff);
-            refs.days.textContent = addLeadingZero(time.days);
-            refs.hours.textContent = addLeadingZero(time.hours);
-            refs.minutes.textContent = addLeadingZero(time.minutes);
-            refs.seconds.textContent = addLeadingZero(time.seconds);
-        } else {
-            Notiflix.Notify.success('Finished!');
-            clearInterval(timerId);
-        }
-    }, 1000)
-}
-
 function addLeadingZero(value) {
     return value.toString().padStart(2, '0');
 }
@@ -76,3 +57,24 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
+
+
+function onStartTimer() {
+    refs.datePicker.disabled = true;
+     timerId = setInterval(() => {
+        refs.btnStart.disabled = true;
+        let dateDiff = endDate - new Date();
+        
+        if (dateDiff >= 0) {
+            let time = convertMs(dateDiff);
+            refs.days.textContent = addLeadingZero(time.days);
+            refs.hours.textContent = addLeadingZero(time.hours);
+            refs.minutes.textContent = addLeadingZero(time.minutes);
+            refs.seconds.textContent = addLeadingZero(time.seconds);
+        } else {
+            Notiflix.Notify.success('Finished!');
+            clearInterval(timerId);
+        }
+    }, 1000)
+}
+
